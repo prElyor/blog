@@ -11,17 +11,17 @@ import * as path from 'path'
       envFilePath: `.env.${process.env.NODE_ENV}`
     }),
     TypeOrmModule.forRoot({
-      name: 'blog',
+      name: 'default',
       type: 'mongodb',
-      url: process.env.MONGO_URI,
+      url: process.env.MONGO_DB_URI,
       database: process.env.MONGO_DB_NAME,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       autoLoadEntities: true,
-      entities: [path.join(__dirname, '**/**.entity{.ts,.js}')]
-    }),
+      entities: [path.join(__dirname, '**/*.entity{.ts,.js}')]
+   }),
     AuthModule,
-    UserModule
+    UserModule,
   ],
   controllers: [],
   providers: [],
