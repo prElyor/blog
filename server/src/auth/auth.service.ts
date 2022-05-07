@@ -37,7 +37,7 @@ export class AuthService {
 
     // Генерация токена
     private async generateToken(user: User) {
-        const payload = {email: user.email, username: user.username, id: user.id}
+        const payload = {email: user.email, username: user.username, _id: user._id}
         return {
             token: this.jwtService.sign(payload)
         }
@@ -47,8 +47,6 @@ export class AuthService {
     private async validateUser(userDto: CreateUserDto) {
 
         const user = await this.usersService.getUserByEmail(userDto.email)
-
-        console.log(user)
 
         const isEqualPass = await bcrypt.compare(userDto.password, user.password)
 

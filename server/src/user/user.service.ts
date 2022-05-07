@@ -2,7 +2,8 @@ import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "./user.entity";
 import {CreateUserDto} from "./dto/user.create.dto";
-import {Repository} from "typeorm";
+import { ObjectID, Repository} from "typeorm";
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class UserService {
@@ -20,6 +21,11 @@ export class UserService {
 
     async getUserByEmail (email: string){
         return this.userRepository.findOne({where: {email}})
+    }
+
+    async getUserById (id: string) {
+
+        return this.userRepository.findOneById(id)
     }
 
 }

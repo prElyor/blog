@@ -1,12 +1,13 @@
 import {Column, Entity, ObjectID, ObjectIdColumn} from "typeorm";
 import {ApiProperty} from "@nestjs/swagger";
+import { ObjectId } from 'mongodb';
 
-@Entity()
+@Entity('user')
 export class User {
 
     @ApiProperty({example: '6275033fe9ce794f20c959b9', description: 'Уникальный идентификатор'})
     @ObjectIdColumn()
-    id: ObjectID
+    _id: string
 
     @ApiProperty({example: 'user@example.com', description: 'Email'})
     @Column({type: String, unique: true, nullable: false })

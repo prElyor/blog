@@ -3,6 +3,9 @@ import {ConfigModule} from "@nestjs/config";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { PostModule } from './post/post.module';
+import { FilesModule } from './files/files.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import * as path from 'path'
 
 @Module({
@@ -22,6 +25,9 @@ import * as path from 'path'
    }),
     AuthModule,
     UserModule,
+    PostModule,
+    FilesModule,
+    CloudinaryModule,
   ],
   controllers: [],
   providers: [],
