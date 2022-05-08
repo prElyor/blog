@@ -145,7 +145,7 @@ const CreateUpdatePost = observer(() => {
             </Grid>
 
             {
-                isAuthor &&
+                (isAuthor || isCreate) &&
                 <Grid container sx={{marginTop: '20px'}}>
                     <Button
                         startIcon={<UploadIcon />}
