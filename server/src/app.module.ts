@@ -7,6 +7,8 @@ import { PostModule } from './post/post.module';
 import { FilesModule } from './files/files.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import * as path from 'path'
+import {User} from "./user/user.entity";
+import {Posts} from "./post/post.entity";
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import * as path from 'path'
       useNewUrlParser: true,
       useUnifiedTopology: true,
       autoLoadEntities: true,
-      entities: [path.join(__dirname, '**/*.entity{.ts,.js}')]
+      entities: [User, Posts]
    }),
     AuthModule,
     UserModule,

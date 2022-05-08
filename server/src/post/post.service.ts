@@ -104,9 +104,9 @@ export class PostService {
                 body: dto.body,
                 author: user,
                 authorId: user._id,
-                media: file.uri,
-                mediaId: file.id,
-                resourceType: file.resourceType,
+                media: file.uri ? file.uri : post.media,
+                mediaId: file.id ? file.id : post.mediaId,
+                resourceType: file.resourceType ? file.resourceType : post.resourceType,
                 createDate: post.createDate,
                 updatedDate: new Date()
             }

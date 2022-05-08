@@ -15,6 +15,11 @@ export class AuthService {
 
     // Регистрация
     async registration(userDto: CreateUserDto) {
+
+        if(!userDto){
+            throw new HttpException('Не отправлены нужные параметры!', HttpStatus.BAD_REQUEST)
+        }
+
         const candidate = await this.usersService.getUserByEmail(userDto.email)
 
         if (candidate) {
@@ -48,9 +53,13 @@ export class AuthService {
 
         const user = await this.usersService.getUserByEmail(userDto.email)
 
+        if(!user){
+            throw new HttpException('Пользователь не найден!', HttpStatus.BAD_REQUEST)
+        }
+
         const isEqualPass = await bcrypt.compare(userDto.password, user.password)
 
-        if (user && isEqualPass) {
+        if ( isEqualPass) {
             const token = await this.generateToken(user)
             const newUser = JSON.parse(JSON.stringify(user))
             delete newUser.password
@@ -60,7 +69,7 @@ export class AuthService {
             }
         }
 
-        throw new UnauthorizedException('Wrong email or password')
+        throw new UnauthorizedException('Неправильный email или пароль')
     }
 
 }
