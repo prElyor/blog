@@ -45,6 +45,7 @@ export class PostService {
         try {
 
             if(userId){
+
                 const author = await this.userService.getUserById(userId)
 
                 if(!author){
@@ -57,6 +58,17 @@ export class PostService {
             }
 
           return this.postsRepository.find()
+
+        }catch (e) {
+            console.log(e)
+            throw new HttpException(e, HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    async getById (id: string) {
+        try {
+
+            return this.postsRepository.findOne({where: {_id: new ObjectId(id)}})
 
         }catch (e) {
             console.log(e)
@@ -111,7 +123,7 @@ export class PostService {
                 updatedDate: new Date()
             }
 
-            return this.postsRepository.save(params)
+            return this.postsRepository.update(dto.id, params)
 
         }catch (e) {
             throw new HttpException(e, HttpStatus.BAD_REQUEST)

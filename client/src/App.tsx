@@ -1,6 +1,6 @@
 import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
-import {CREATE_UPDATE_POST_PATH, LOGIN_PATH, POST_PATH, REGISTRATION_PATH} from "./routes/paths";
+import {CREATE_UPDATE_POST_PATH, LOGIN_PATH, MY_POSTS_PATH, POST_PATH, REGISTRATION_PATH} from "./routes/paths";
 import {Registration} from "./pages/Registration";
 import {Login} from "./pages/Login";
 import {PrivateRoutes} from "./routes/PrivateRoutes";
@@ -17,6 +17,7 @@ function App() {
                 <Route element={<Layout />}>
                     <Route path={''} element={<Navigate to={POST_PATH} />} />
                     <Route path={POST_PATH} element={<Posts/>}/>
+                    <Route path={MY_POSTS_PATH} element={<Posts author/>}/>
                     <Route path={CREATE_UPDATE_POST_PATH} element={<CreateUpdatePost/>}/>
                 </Route>
             </Route>

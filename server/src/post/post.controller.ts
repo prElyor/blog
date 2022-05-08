@@ -57,6 +57,16 @@ export class PostController {
        return this.postsService.getAll(userId)
     }
 
+    @ApiOperation({summary: 'Получение поста по его id'})
+    @ApiResponse({status: 201, type: Posts})
+    @ApiResponse({status: 401, type: 'Не авторизован!'})
+    @ApiResponse({status: 400, type: 'Что-то пошоло не так!'})
+    @ApiBearerAuth()
+    @Get('/:id')
+    getById(@Param('id') id: string) {
+        return this.postsService.getById(id)
+    }
+
     @ApiOperation({summary: 'Удаление постов'})
     @ApiResponse({status: 200, type: 'Пост успешно удален!' })
     @ApiResponse({status: 401, type: 'Не авторизован!'})

@@ -7,7 +7,20 @@ export interface PostModel {
     body: string
     author: UserModel
     authorId: string
-    media: string
+    media: any
     mediaId: string
     resourceType: string
+}
+
+export interface PostModelQueryParams {
+    userId?: string
+}
+
+export interface PostModelCreate {
+    body: string
+    media?: any
+}
+
+export interface PostModelUpdate extends PostModelCreate{
+    id: string
 }

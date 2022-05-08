@@ -1,15 +1,25 @@
 import React from 'react';
 import {Outlet} from 'react-router-dom'
+import {Navbar} from "../Navbar";
+import {styled} from "@mui/material";
+
+const Main = styled('main')(() => ({
+    maxWidth: '1300px',
+    margin: '10px auto',
+    width: '100%'
+}))
 
 const Layout = () => {
     return (
-        <>
-           <header>Header</header>
-            <main>
+        <div>
+           <header>
+               <Navbar />
+           </header>
+            <Main>
                 <Outlet />
-            </main>
-            <footer>Footer</footer>
-        </>
+            </Main>
+            <footer></footer>
+        </div>
     );
 };
 

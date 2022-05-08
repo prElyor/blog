@@ -75,7 +75,6 @@ export const AuthForm:React.FC<IAuthFormProps> = observer(({handleChange, text, 
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
-                                autoFocus
                                 onChange={handleChange}
                             />
                             <TextField
@@ -86,7 +85,6 @@ export const AuthForm:React.FC<IAuthFormProps> = observer(({handleChange, text, 
                                 label="Username"
                                 name="username"
                                 autoComplete="username"
-                                autoFocus
                                 onChange={handleChange}
                             />
                             <TextField
